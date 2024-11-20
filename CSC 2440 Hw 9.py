@@ -4,46 +4,44 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def input_tree_nodes():
-    root_node = int(input("Enter the value for the root node: "))
+def InputNodes():
+    root_node = int(input("Enter value for root node: "))
     root = TreeNode(root_node)
     queue = [root]
 
     while queue:
         current = queue.pop(0)
-        left_node = input(f"Enter the left child of {current.value} ('None' if no child): ")
+        leftNode = input(f"Enter value to the left child of {current.value} (Type 'None' if no child): ")
 
-        if left_node != 'None':
-            left_node = int(left_node)
-            current.left = TreeNode(left_node)
+        if leftNode != 'None':
+            leftNode = int(leftNode)
+            current.left = TreeNode(leftNode)
             queue.append(current.left)
 
-        right_node = input(f"Enter the right child of {current.value} ('None' if no child): ")
+        rightNode = input(f"Enter value to the right child of {current.value} ('None' if no child): ")
 
-        if right_node != 'None':
-            right_node = int(right_node)
-            current.right = TreeNode(right_node)
+        if rightNode != 'None':
+            rightNode = int(rightNode)
+            current.right = TreeNode(rightNode)
             queue.append(current.right)
     return root
 
-def print_tree_nodes(root):
+def PrintNodes(root):
     if root is None:
         return
-    print_tree_nodes(root.left)
+    PrintNodes(root.left)
     print(root.value, end=" ")
-    print_tree_nodes(root.right)
+    PrintNodes(root.right)
 
-def sum_divisible_values(root):
+def DivisibleValues(root):
     if root is None:
         return 0
-    return (root.value if root.value % 5 == 0 else 0) + sum_divisible_values(root.left) + sum_divisible_values(
+    return (root.value if root.value % 5 == 0 else 0) + DivisibleValues(root.left) + DivisibleValues(
         root.right)
 
 if __name__ == "__main__":
-    root = input_tree_nodes()
-    print(f"The sum of values divisible by 5 is: {sum_divisible_values(root)}")
-    print("Tree values in order:")
-    print_tree_nodes(root)
-
-
+    root = InputNodes()
+    print(f"The sum of divisible values by 5 is: {DivisibleValues(root)}")
+    print("Tree in order:")
+    PrintNodes(root)
 
