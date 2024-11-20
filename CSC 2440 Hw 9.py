@@ -5,7 +5,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def InputNodes():
+def inputNodes():
     root_node = int(input("Enter value for root node: "))
     root = TreeNode(root_node)
     queue = [root]
@@ -27,22 +27,22 @@ def InputNodes():
             queue.append(current.right)
     return root
 
-def PrintNodes(root):
-    if root is None:
+def printTreeNodes(node):
+    if node is None:
         return
-    PrintNodes(root.left)
-    print(root.value, end=" ")
-    PrintNodes(root.right)
+    printTreeNodes(node.left)
+    print(node.value, end=" ")
+    printTReeNodes(node.right)
 
-def DivisibleValues(root):
+def divisibleValues(root):
     if root is None:
         return 0
-    return (root.value if root.value % 5 == 0 else 0) + DivisibleValues(root.left) + DivisibleValues(
+    return (root.value if root.value % 5 == 0 else 0) + divisibleValues(root.left) + divisibleValues(
         root.right)
 
 if __name__ == "__main__":
-    root = InputNodes()
-    print(f"The sum of divisible values by 5 is: {DivisibleValues(root)}")
+    root = inputNodes()
+    print(f"The sum of divisible values by 5 is: {divisibleValues(root)}")
     print("Tree in order:")
-    PrintNodes(root)
+    printNodes(root)
 
