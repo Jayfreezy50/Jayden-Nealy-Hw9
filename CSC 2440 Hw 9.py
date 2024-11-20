@@ -1,3 +1,4 @@
+#Jayden
 class TreeNode:
     def __init__(self, value):
         self.value = value
@@ -9,14 +10,17 @@ def inputNodes():
     queue = [root]
     while queue:
         current = queue.pop(0)
-        left = input(f"Enter left child of {current.value} (or 'None'): ")
-        if left != 'None':
-            current.left = TreeNode(int(left))
+
+        left_node = input(f"Enter left child of {current.value} (or 'none'): ")
+        if left_node != 'none':
+            current.left = TreeNode(int(left_node))
             queue.append(current.left)
-        right = input(f"Enter right child of {current.value} (or 'None'): ")
-        if right != 'None':
-            current.right = TreeNode(int(right))
+
+        right_node = input(f"Enter right child of {current.value} (or 'none'): ")
+        if right_node != 'none':
+            current.right = TreeNode(int(right_node))
             queue.append(current.right)
+
     return root
 
 def printTreeNodes(node):
@@ -31,8 +35,7 @@ def sumDivisibleByFive(node):
     return (node.value if node.value % 5 == 0 else 0) + sumDivisibleByFive(node.left) + sumDivisibleByFive(node.right)
 
 if __name__ == "__main__":
-    tree = inputNodes()
-    print(f"\nSum of values divisible by 5: {sumDivisibleByFive(tree)}")
+    node = inputNodes()
+    print(f"\nSum of values divisible by 5: {sumDivisibleByFive(node)}")
     print("\nIn-order traversal of the tree:")
-    printTreeNodes(tree)
-    print()
+    printTreeNodes(node)
